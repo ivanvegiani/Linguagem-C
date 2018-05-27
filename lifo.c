@@ -23,13 +23,22 @@ struct tpilha pilha;
 
 //Main
 int main (void){
+    int retirado=0;
     pilha.ini=0;
     pilha.top=0;
     stackPush();
     printStack(pilha.dados);
-    stackPop(pilha.dados);
+
+
+    retirado=stackPop(pilha.dados);
+    printf("retirado o valor %d\n",retirado);
     printStack(pilha.dados);
-    printf("retirado o valor %d\n",stackPop(pilha.dados));
+
+
+    retirado=stackPop(pilha.dados);
+    printf("retirado o valor %d\n",retirado);
+    printStack(pilha.dados);
+
 
 }//fim main
 
@@ -41,6 +50,7 @@ void stackPush(){
 for(int i=0;i<tamanho;i++){
   printf("\nPasso %d\n",i);
   printf("%d", pilha.top);
+
   if (pilha.top == tamanho) {
     printf("\nA pilha está cheia, impossível empilhar um novo elemento!\n\n");
   }// fim if
@@ -63,14 +73,16 @@ printf("\n");
 }//fim printStack
 
 int stackPop(int stack[]){
+  int retirar;
 
   if (pilha.top == pilha.ini) {
     printf("\nA pilha está vazia, impossível desempilhar um novo elemento!\n\n");
   }// fim if
   else {
-    pilha.dados[pilha.top]=0;
     pilha.top--;
-    return pilha.dados[pilha.top];
+    retirar=pilha.dados[pilha.top];
+    pilha.dados[pilha.top]=0;
+    return retirar;
   }//fim else
 
 }//fim stackPop
